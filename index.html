@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Tourist Safety System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> -->
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1><i class="fas fa-shield-alt"></i> Smart Tourist Safety System</h1>
+      <p>AI-Powered Geo-Fencing & Blockchain-based Digital Identity</p>
+    </div>
+
+    <div class="dashboard">
+      <!-- Tourist Panel -->
+      <div class="panel tourist-panel">
+        <h2><i class="fas fa-user"></i> Tourist Dashboard</h2>
+
+        <div class="form-group">
+          <label>Tourist Registration</label>
+          <input type="text" id="touristName" placeholder="Full Name">
+          <input type="email" id="touristEmail" placeholder="Email">
+          <input type="text" id="touristPhone" placeholder="Phone Number">
+          <select id="touristNationality">
+            <option value="">Select Nationality</option>
+            <option value="indian">Indian</option>
+            <option value="usa">USA</option>
+            <option value="uk">United Kingdom</option>
+            <option value="germany">Germany</option>
+            <option value="other">Other</option>
+          </select>
+          <button class="btn" onclick="registerTourist()">
+            <i class="fas fa-user-plus"></i> Register
+          </button>
+        </div>
+
+        <div class="blockchain-status">
+          <h3><i class="fas fa-link"></i> Blockchain Digital ID</h3>
+          <p id="blockchainId">ID: Not Generated</p>
+          <button class="btn btn-success" onclick="generateBlockchainId()">
+            <i class="fas fa-id-card"></i> Generate Digital ID
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label>Current Location</label>
+          <button class="btn" onclick="updateLocation()">
+            <i class="fas fa-map-marker-alt"></i> Update Location
+          </button>
+          <div id="locationStatus" class="status-display">
+            Location: Not shared
+          </div>
+        </div>
+
+        <div class="safety-status" id="safetyStatus">
+          <i class="fas fa-shield-alt"></i>
+          <span>Safety Status: Monitoring...</span>
+        </div>
+
+        <button class="btn btn-emergency" onclick="triggerSOS()">
+          <i class="fas fa-exclamation-triangle"></i> EMERGENCY SOS
+        </button>
+      </div>
+
+      <!-- Authority Panel -->
+      <div class="panel authority-panel">
+        <h2><i class="fas fa-shield"></i> Authority Dashboard</h2>
+
+        <div class="form-group">
+          <label>Authority Login</label>
+          <input type="text" id="authorityId" placeholder="Authority ID">
+          <input type="password" id="authorityPassword" placeholder="Password">
+          <button class="btn" onclick="authorityLogin()">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label>Create Geo-Fence</label>
+          <input type="text" id="fenceName" placeholder="Fence Name">
+          <select id="fenceType">
+            <option value="safe">Safe Zone</option>
+            <option value="warning">Warning Zone</option>
+            <option value="danger">Danger Zone</option>
+            <option value="restricted">Restricted Area</option>
+          </select>
+          <input type="number" id="fenceRadius" placeholder="Radius (meters)" min="50" max="5000" value="500">
+          <button class="btn" onclick="createGeofence()">
+            <i class="fas fa-plus-circle"></i> Create Fence
+          </button>
+        </div>
+
+        <div class="incidents-list">
+          <h3>Active Incidents</h3>
+          <div id="incidentsList">
+            <div class="incident-item">
+              <strong>Sample Incident</strong><br>
+              Type: System Test<br>
+              Status: Resolved<br>
+              Time: Just now
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" id="activeTourists">0</div>
+            <div>Active Tourists</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="totalIncidents">0</div>
+            <div>Total Incidents</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Container -->
+    <div class="map-container">
+      <h2><i class="fas fa-map"></i> Real-Time Safety Map</h2>
+      <div id="map" style="height:500px; border-radius: 10px; overflow: hidden;"></div>
+    </div>
+
+  </div>
+
+  <!-- Notification Container -->
+  <div id="notification" class="notification"></div>
+
+
+  <!-- <div id="map" style="height:500px;"></div> -->
+
+
+
+
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
